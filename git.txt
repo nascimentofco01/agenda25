@@ -13,9 +13,11 @@ $git -v
 #adicionar nome e email, antes de dar o primeiro commit
 #outras configurações podem ser feita com o git config.
 $git config --global user.name "Your Name"
+$git config --global user.name "nascimentofco01"
 
 # o email pode ser diferente para cada projeto.
 $git config --global user.email "Your Email"
+$git config --global user.email "nascimento.fco@gmail.com"
 
 #cria um novo repositório do GIT, repositório local, estando no diretorio do projeto que deseja adicionar ou acompanhar.
 $git config --global init.defaultBranch main
@@ -45,12 +47,13 @@ $git commit -m 'initial'
 #saber o log dos ultimo commit
 $git log
 
-#adiciona uma origin, ou seja o caminho para um repositório remoto ou SSH
+#adiciona uma origin, ou seja o caminho para um repositório remoto HTTP ou SSH(com SSH precisa de chave)
+#com HTTP ele irá pedir para logar pelo navegador após o comando abaixo.
 $git remote add origin <URL_DO_GIT>
-$git remote add origin git@github.com:nascimentofco01/agenda25.git
+$git remote add origin https://github.com/nascimentofco01/agenda25.git
 
 #podemos subir o código que está no repositório local para o o repositório remoto que
-criamos com o remote add origin. o -u somente a primeira vez.
+criamos com o remote add origin. o "-u" somente a primeira vez.
 $git push origin <branch> -u
 $git push origin main -u
 
@@ -81,6 +84,12 @@ $git branch -m <novo nome>
 copiar o endereço https do repósitorio, selecionado a partir da aba code.
 $git clone https://github.com/nascimentofco01/SiteComunidade.git
 
+#Copia Git de terceiros
+#pagina do git pode aparecer assim: https://github.com/luizomf/projeto-agenda-django-23/tree/5defd86e31a2f6db22718dc310fa9b6c1e3a0c9a
+#mas a principal é essa abaixo. 
+$ git clone https://github.com/luizomf/projeto-agenda-django-23
+
+
 Por outro lado, se uma cópia de trabalho de um repositório local for criada, use:
 $git clone /path/to/repository
 
@@ -106,9 +115,12 @@ $git tag 1.1.0 <insert-commitID-here>
 #Para redefinir o índice e o diretório de trabalho para o estado do último commit, o comando git reset é usado. Uso:
 $git reset --hard HEAD
 
-2 - Apagando um repositório
+2 - Apagando um repositório (apagar a pasta oculta ".git")
 Há momentos em que não queremos apagar nossos arquivos, mas queremos remover as informações sobre aquele repositório criado com o $ git init (talvez criar um repositório novo com os mesmos arquivos). Para isso não usamos o Git. Lembre-se que um repositório Git armazena as informações dentro de uma pasta oculta chamada /.git. Então basta apagar esta pasta oculta que o seu atual diretório deixará de ser um repositório.
 $ rm -rf .git
+
+# pagando pelo dos
+$del /f /s /q .git
 
 
 

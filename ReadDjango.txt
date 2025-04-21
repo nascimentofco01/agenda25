@@ -1,0 +1,56 @@
+Extensão do VScode
+Django
+Baptiste Darthenay
+
+Iniciando o Django
+abrir o terminal CMD, powershell ou do framework Visual Code, Pycharm
+Verificar se python instalado
+$ python -V  # ou $ python --version
+
+Sintaxe dos comandos
+$ md <diretorio>
+$ python -m venv <nome_do_ambiente>
+$ <nome_do_ambiente>\Scripts\activate
+$ pip install django
+$ python.exe -m pip install --upgrade pip   #requerido atualização após instalar o Django 
+$ django-admin startproject <nome_do_projeto> .  # com um "ponto" no final para não criar  o mesno diretorio dentro do projeto
+$ python manage.py runserver #ou comando alternativo em caso de erro $ python manage.py runserver 0:8000
+para criar um app
+$ python manage.py startapp <app>
+repositório de dados para teste: https://jsonplaceholder.typicode.com/
+
+$deactivate   #desativar ambiente virtual
+
+Criando ou atualizando um arquivo de configuração 
+$ pip freeze > requirements.txt
+
+instalar as bilbioteca do arquivo de configuração
+$ pip install -r requirements.txt
+
+
+
+Comandos reais
+$ cd ola_django
+$ python -m venv env
+$ env\Scripts\activate
+$ pip install django
+$ python.exe -m pip install --upgrade pip
+$ django-admin startproject project_ola .
+$ python manage.py runserver
+$ python manage.py startapp home
+$ python manage.py startapp blog
+
+$ deactivate
+
+
+
+Configurar o git
+
+git config --global user.name 'Seu nome'
+git config --global user.email 'seu_email@gmail.com'
+git config --global init.defaultBranch main
+# Configure o .gitignore
+git init
+git add .
+git commit -m 'Mensagem'
+git remote add origin URL_DO_GIT

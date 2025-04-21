@@ -1,0 +1,353 @@
+Git.txt - 
+Git + Github + SSH (Básico) - Otávio Miranda
+https://www.youtube.com/watch?v=SnTBOhYFr28
+
+Instruções GIT.txt
+https://git-scm.com/download/win
+github.com é um repositório remoto
+
+verificar se git foi instalado e versão
+$git -v
+
+# ir para o diretorio do projeto
+#adicionar nome e email, antes de dar o primeiro commit
+#outras configurações podem ser feita com o git config.
+$git config --global user.name "Your Name"
+
+# o email pode ser diferente para cada projeto.
+$git config --global user.email "Your Email"
+
+#cria um novo repositório do GIT, repositório local, estando no diretorio do projeto que deseja adicionar ou acompanhar.
+$git config --global init.defaultBranch main
+
+# Esse passo também poderá ser feito as vezes ser feito antes de informar o user.name e user.email
+$git init
+
+#Mostra em qual brasch se master ou develop "On branch master" ele pode ser renomeado, o master normalmente como main.
+#Mudanças dos arquivos (ausentes ou não rastreados)
+#A serem confirmadas (prontos para serem confirmados (committed))
+#não confirmados, Esses arquivos precisam ser adicionados ao índice antes de serem confirmados.
+# o "U" que aparece ao lado dos arquivos no VSCode é "Untracked" não rastreado
+
+$git status
+
+#configurar o git ".gitignore" arquivos que não devem fazer parte das alterações do repositorio, busca na internet por "django .gitignore"
+
+#adiciona as alterações a área de staging, que é como se fosse um passo antes de adicionar as alterações no repositório local
+usado para adicionar arquivos ao índice,.
+git add <nome do arquivo>
+$"git add .(ponto)" (nesse caso insere todos os arquivos)
+
+#adiciona as alterações que estão em staging ao repositório local. O -m é para adicionar a menssagem.
+$git commit -m <"nome do commit">
+$git commit -m 'initial'
+
+#saber o log dos ultimo commit
+$git log
+
+#adiciona uma origin, ou seja o caminho para um repositório remoto ou SSH
+$git remote add origin <URL_DO_GIT>
+$git remote add origin git@github.com:nascimentofco01/agenda25.git
+
+#podemos subir o código que está no repositório local para o o repositório remoto que
+criamos com o remote add origin. o -u somente a primeira vez.
+$git push origin <branch> -u
+$git push origin main -u
+
+#Para mesclar todas as alterações presentes no repositório remoto para o diretório de trabalho local, o comando pull é usado
+$git pull
+
+#lista todas as branchs, O branch local, como o próprio nome sugere, consiste em ramificações
+ do código que apenas um desenvolvedor tem acesso, ficando disponível localmente em seu repositório.
+$git branch
+
+Para excluir uma branch local basta executar o comando branch com -d ou -D
+$git branch -d nome-da-branch
+$git branch -D nome-da-branch
+A opção -d é mais segura, pois ela só apaga a branch se você já tiver feito merge ou enviado as alterações para seu repositório remoto, evitando perda de código.
+A opção -D ignora o estado da sua branch, forçando a sua remoção.
+Esse comando apaga apenas a branch local, não removendo branches remotas.
+ 
+#serve para trocar de uma branch para outra ou criar uma com a opção -b
+$git checkout "nome da branch"
+$git checkout -b <branch-name>  (para criar)
+
+Para mudar de branch: git checkout nome_da_branch ou git switch nome_da_branch.
+
+#renomeado a Breach local (mudando o nome)
+$git branch -m <novo nome>
+
+#Comando para baixar o código-fonte existente de um repositório remoto. Entre no powershell
+copiar o endereço https do repósitorio, selecionado a partir da aba code.
+$git clone https://github.com/nascimentofco01/SiteComunidade.git
+
+Por outro lado, se uma cópia de trabalho de um repositório local for criada, use:
+$git clone /path/to/repository
+
+
+#unir o código de duas branchs, mesclar uma ramificação no ramo ativo.
+$git merge feature/info-screen  (no caso funcionou sem o origin)
+$git merge origin feature/info-screen
+
+
+#git visualizar o status do git
+git status
+
+#explora o histórico de um repositório
+git log
+
+#O comando git diff é usado para listar os conflitos. Para visualizar conflitos com o arquivo base, ou todos os arquivos
+$git diff --base <file-name>
+$git diff    (todos os arquivos)
+
+#A marcação é usada para marcar compromissos específicos com alças simples. Um exemplo pode ser:
+$git tag 1.1.0 <insert-commitID-here>
+
+#Para redefinir o índice e o diretório de trabalho para o estado do último commit, o comando git reset é usado. Uso:
+$git reset --hard HEAD
+
+2 - Apagando um repositório
+Há momentos em que não queremos apagar nossos arquivos, mas queremos remover as informações sobre aquele repositório criado com o $ git init (talvez criar um repositório novo com os mesmos arquivos). Para isso não usamos o Git. Lembre-se que um repositório Git armazena as informações dentro de uma pasta oculta chamada /.git. Então basta apagar esta pasta oculta que o seu atual diretório deixará de ser um repositório.
+$ rm -rf .git
+
+
+
+
+https://www.alura.com.br/artigos/iniciando-repositorio-git?utm_term=&utm_campaign=%5BSearch%5D+%5BPerformance%5D+-+Dynamic+Search+Ads+-+Artigos+e+Conte%C3%BAdos&utm_source=adwords&utm_medium=ppc&hsa_acc=7964138385&hsa_cam=11384329873&hsa_grp=111087461203&hsa_ad=645853715422&hsa_src=g&hsa_tgt=aud-456779235754:dsa-843358956400&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gclid=Cj0KCQjwpompBhDZARIsAFD_Fp_3UqDfWpKoY7e2nOzEh1tCNXqFg2okHo8N_NYAD-ttiTAOvEXFjBIaAnYNEALw_wcB
+
+#https://www.treinaweb.com.br/blog/comandos-do-git-que-voce-precisa-conhecer-parte-1?utm_source=google&utm_medium=pmax&utm_campaign=home-A-iniciantes&gclid=Cj0KCQjwmvSoBhDOARIsAK6aV7glwEi0BgPgGtBhSHFaJL34AV4CSlhPtkvUpymlL6x2FbpjGIwaL1gaAvZOEALw_wcB
+
+
+4 - Desfazendo Alterações
+Poderíamos ter um post inteiro apenas falando sobre como desfazer alterações no Git, já que há vários cenários possíveis. Mas vamos resumir os principais:
+
+4.1 - Arquivos não monitorados
+Se o arquivo foi modificado mas você ainda não executou git add, um simples git checkout removerá as alterações, deixando o arquivo como ele estava no último commit. Passe o nome do arquivo a ter as alterações desfeitas ou . para desfazer as alterações em todos os arquivos modificados. Muito útil se você está apenas experimentando um código mas não quer que ele seja salvo.
+git checkout .
+
+Para apagar novos arquivos que ainda não foram adicionados ao Stage, execute:
+git clean -df
+
+4.2 - Removendo arquivos do Stage
+Se você executou git add e quer desfazer, use o reset.
+git reset
+Para desfazer as modificações, após o reset use o checkout ou clean mostrados anteriormente.
+
+4.3 - Desfazendo o último commit
+Caso você tenha feito alterações e já tenha chegado a realizar um commit, para desfazer é necessário usar o revert.
+git revert HEAD
+Será criado um novo commit indicando que o último commit foi desfeito.
+Esse comando apaga novos arquivos.
+
+5 - Renomear Commit
+Escreveu algo errado no último commit? Esse comando te permite renomear a mensagem do último commit feito:
+$ git commit --amend
+
+6.3 - 
+
+6.4 - Renomeando branches
+Para renomear a sua atual branch local, execute o comando branch com a opção -m, passando o novo nome.
+
+git branch -m novo-nome-da-branch
+
+Se você estiver em uma branch e quiser renomear outra, você deve passar primeiro o nome atual da branch que quer renomear:
+git branch -m nome-atual novo-nome
+6.5 - Branch Órfã
+Uma branch órfã tem esse nome porque ela não está ligada à branch principal, então seus históricos não são compartilhados.
+
+Copiar
+          i---j---k     <== branch 'minha branch'
+         /
+a---b---c---d---h---l   <== branch 'main'
+     \         /
+      e---f---g         <== branch 'minha outra branch'
+	  
+1---2---3---4			<== branch `órfã`
+Isso pode ser útil quando você quer colocar mais de um projeto em um mesmo repositório. Um bom exemplo é quando você tem um projeto no Github e quer criar um site para divulgar o seu projeto. A aplicação e o site são coisas diferentes, portanto os códigos deles devem ser versionados separadamente. Ter ambos em um mesmo repositório simplifica o gerenciamento.
+
+Nós já ensinamos aqui no blog da TreinaWeb como criar páginas para repositórios no Github.
+
+Para criar uma branch órfã basta usar o comando:
+
+git checkout --orphan minha-branch-orfa
+7 - Visualizando o Histórico de Commits
+Para visualizar o histórico de commits basta usar o seguinte comando:
+
+$ git log
+Você ainda pode adicionar mais parâmetros a esse comando, como:
+
+7.1 - Histórico de um ou mais arquivos
+Copiar
+$ git log -p meus-arquivos
+Você pode indicar nomes de arquivo ou de um diretório para ver o histórico apenas de um grupo de arquivos ao invés do projeto inteiro
+
+7.2 - Histórico de um autor
+Mostra o histórico de commits feitos por uma única pessoa
+
+Copiar
+$ git log --autor=nome-autor
+7.3 - Histórico por Data
+Mostra o histórico de commits feitos antes ou após uma data:
+
+Copiar
+$ git log --after="MMM DD YYYY"
+$ git log --before="MMM DD YYYY"
+Exemplo do formato usado nas datas: “Jul 07 2019”
+
+7.4 - Histórico Baseado em uma Mensagem
+Mostra o histórico de commits filtrado por uma mensagem
+
+Copiar
+$ git log --grep produtos
+Com esse comando teremos o histórico de commits em que a mensagem do commit possua a palavra “produtos”. O que passamos pode ser uma expressão regular, e podemos passar mais de uma:
+
+Copiar
+// procurar por "produtos" OU "usuarios"
+$ git log --grep produtos --grep usuarios
+
+// procurar por "produtos" E "usuarios"
+$ git log --grep produtos --and --grep usuarios
+8 - Exibir branches em um modo mais legível
+É possível mandar imprimir o histórico exibindo as branches do repositório com algo mais legível e com cores com um comando. Teremos um resultado parecido com esse:
+
+Copiar
+* a102055 (HEAD -> main) commit 8
+| * 196d28e (branch-2) commit 7
+| * 07e073c commit 3
+| * 2b077ca new fie
+| | * c1369d8 (branch-3) commit 6
+| | * d11bdcd commit 5
+| |/
+|/|
+* | 2b22b75 commit 2
+|/
+* d5a12b0 .gitignore
+* 9535426 -- commit 1
+O comando é um pouco comprido:
+
+Copiar
+git log --all --decorate --oneline --graph
+Para decorar tudo o que devemos escrever depois de log, lembre-se de A DOG
+
+–all
+–decorate
+–oneline
+–graph
+9 - Atalhos Personalizados
+Podemos criar atalhos para não ficar escrevendo comandos grandes como o do exempo anterior.
+
+9.1 - Criando atalhos personalizados
+Para criar atalhos personalizados, basta adicionar uma configuração, passando o nome que você quiser para o alias.
+
+Por exemplo, se eu quiser que o comando ensinado anteriormente fosse chamado a partir do atalho dog:
+
+Copiar
+//deixar o comando disponível apenas no repositório atual
+git config alias.dog "log --all --decorate --oneline --graph"
+//deixar o comando global em sua máquina, ficando disponível para qualquer repositório
+git config --global alias.dog "log --all --decorate --oneline --graph"
+Como os comandos serão do Git, não precisamos ficar chamando-o. Note que o comando passado para o atalho não inicia com git.
+
+Para remover os atalhos basta executar:
+
+Copiar
+//atalhos locais
+git config --unset alias.dog
+//atalhos globais
+git config --global --unset alias.dog
+Agora podemos ter o comando do exemplo anterior apenas executando $ git dog.
+
+9.2 - Listando atalhos personalizados
+Para exibir uma lista de atalhos personalizados, podemos executar o comando git config -l, que lista todas as configurações do seu Git. O problema é que esse simples comando vai listar todas as configurações. Podemos fazer um comando mais sofisticado para ele listar apenas os nossos atalhos personalizados e ainda organizá-los em ordem alfabética:
+
+Copiar
+git config -l | grep ^alias\. | cut -c 7- | sort
+O comando é grande, mas tudo bem, pois agora você sabe criar atalhos, não é mesmo? Podemos, por exemplo, criar um atalho com o nome alias:
+
+Copiar
+git config alias.alias "! git config -l | grep ^alias\. | cut -c 7- | sort"
+Por comandos como grep e sort não serem do Git, tivemos que iniciar a linha de comando com !. Perceba que por causa disso, nossa primeira instrução teve que chamar o Git.
+
+O $ git config -l lista as configurações do Git. Pegamos o retorno e passamos ao comando $ grep, que serve para fazer busca de textos. Como queremos os atalhos, que vimos que começa com “alias”, mandamos o grep buscar por tudo que começa com alias.. Para termos uma lista mais limpa, usamos o comando cut para remover a parte “alias.” do nome dos atalhos. Por fim, usamos o comando sort para ordenar nossos atalhos em ordem alfabética.
+
+10 - Trabalhando em mais de uma coisa sem fazer commit
+Pode haver momentos em que você precisa parar o que está fazendo e começar a trabalhar em outra tarefa. Porém, pode não ser bom fazer o commit de algo que ainda não foi finalizado para depois voltar nele, resultando em um commit que ficará no histórico mas que possui um código que não funciona. Nós podemos salvar essas alterações feitas mesmo sem precisar realizar um commit para depois voltar a trabalhar nela, o que é chamado de Stash (algo como “esconder” ou “acumular”).
+
+Ao fazer isso, seu repositório voltará ao estado do último commit, e as alterações feitas anteriormente estarão “escondidas”.
+
+10.1 - Salvando modificações em um Stash
+Simplesmente execute o comando stash
+
+Copiar
+$ git stash
+Você ainda pode colocar um nome nesse stash:
+
+Copiar
+$ git stash push -m meu-novo-stash
+10.2 - Listando Stashes
+Você pode fazer vários stashes. Para listá-los, execute o comando:
+
+Copiar
+$ git stash list
+10.3 - Recuperando modificações
+Se algo foi salvo no stash, basta executar o seguinte comando para recuperar as alterações que foram jogadas lá:
+
+Copiar
+$ git stash apply
+Isso vai recuperar o código do stash mais recente. Se quiser recuperar um stash mais antigo, basta ver o número do stash que aparece quando o listamos e passar para o seguinte comando:
+
+Copiar
+$ git stash apply stash@{2}
+10.4 - Removendo Stashes
+Quando nós recuperamos alterações de um stash, ele continua guardado. Para apagá-lo da pilha, execute o comando drop junto ao nome do stash que você quer remover:
+
+Copiar
+$ git stash drop stash@{5}
+Se você quiser recuperar o código de um stash e já apagá-lo, pode usar o comando pop no lugar do apply.
+
+11 - Juntando alguns pedaços do trabalho
+Pode ser que você esteja trabalhando em uma branch e queira fazer o merge do código dela com outra branch, mas não quer juntar o trabalho inteiro, apenas um commit específico. Isso é possível com o Cherry Pick.
+
+Copiar
+git cherry-pick id-do-commit
+
+
+
+#https://rogerdudler.github.io/git-guide/index.pt_BR.html
+
+atualizar & mesclar
+para atualizar seu repositório local com a mais nova versão, execute
+git pull
+na sua pasta de trabalho para obter e fazer merge (mesclar) alterações remotas.
+para fazer merge de um outro branch ao seu branch ativo (ex. master), use
+git merge <branch>
+em ambos os casos o git tenta fazer o merge das alterações automaticamente. Infelizmente, isto nem sempre é possível e resulta em conflitos. Você é responsável por fazer o merge estes conflitos manualmente editando os arquivos exibidos pelo git. Depois de alterar, você precisa marcá-los como merged com
+git add <arquivo>
+antes de fazer o merge das alterações, você pode também pré-visualizá-as usando
+git diff <branch origem> <branch destino>
+
+rotulando
+é recomendado criar rótulos para releases de software. Este é um conhecido conceito, que também existe no SVN. Você pode criar um novo rótulo chamado 1.0.0 executando o comando
+git tag 1.0.0 1b2e1d63ff
+o 1b2e1d63ff representa os 10 primeiros caracteres do id de commit que você quer referenciar com seu rótulo. Você pode obter o id de commit com
+git log
+você pode também usar menos caracteres do id de commit, ele somente precisa ser único.
+
+sobrescrever alterações locais
+No caso de você ter feito algo errado (que seguramente nunca acontece ;) ) você pode sobrescrever as alterações locais usando o commando
+git checkout -- <arquivo>
+isto substitui as alterações na sua árvore de trabalho com o conteúdo mais recente no HEAD. Alterações já adicionadas ao index, bem como novos arquivos serão mantidos.
+
+Se ao invés disso você deseja remover todas as alterações e commits locais, recupere o histórico mais recente do servidor e aponte para seu branch master local desta forma
+git fetch origin
+git reset --hard origin/master
+
+dicas úteis
+Interface gráfica padrão
+gitk
+usar saídas do git coloridas
+git config color.ui true
+exibir log em apenas uma linha por commit
+git config format.pretty oneline
+fazer inclusões interativas
+git add -i
